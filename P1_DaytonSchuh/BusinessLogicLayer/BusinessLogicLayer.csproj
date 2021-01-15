@@ -1,7 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <DebugType>Full</DebugType>
     <TargetFramework>net5.0</TargetFramework>
+    <ProjectGuid>{6EA60305-5701-4C1C-8F78-9CC631ABD3B1}</ProjectGuid>
   </PropertyGroup>
 
   <ItemGroup>

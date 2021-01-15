@@ -4,6 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>aspnet-P1_DaytonSchuh-D147E8E9-8540-4EA8-8752-959E9E062CC8</UserSecretsId>
 	  <GenerateRuntimeConfigurationFiles>True</GenerateRuntimeConfigurationFiles>
+    <ProjectGuid>{6B37A52B-D907-4515-A2C7-C2F629992983}</ProjectGuid>
+    <DebugType>Full</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
