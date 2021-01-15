@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ModelLayer.ViewModels.ProductViewModel>
+
+@{
+    ViewData["Title"] = "List of Products";
+}
+
+<h1>List of Products</h1>
+<div class="row">
+    @{
+        if (Model != null)
+        {
+            for (int i = 0; i < Model.Count(); i++)
+            {
+                if (i > 0 && i % 3 == 0)
+                {
+                @:</div><div class="row">
+                }
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="img-thumbnail">
+                        @if (Model.ElementAt(i) != null)
+                        {
+                        @if (Model.ElementAt(i).ProductPicture != null)
+                        {
+                            <img style="width:64px;height:64px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(Model.ElementAt(i).ProductPicture))">
+                        }
+                        <a class="btn btn-info mx-auto" asp-action="AddToCart" asp-route-id="@Model.ElementAt(i).Id">Add To Cart</a>
+                        <div class="figure-caption">
+                            <h3 class="pull-right">@Model.ElementAt(i).Price.ToString("c")</h3>
+                            <h3>
+                                <a href="@Url.RouteUrl("ProductDetails", @Model.ElementAt(i).Id)">@Model.ElementAt(i).Name</a>
+                            </h3>
+                            <p>@Model.ElementAt(i).Description</p>
+                        </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+
+        else
+        { <h1> These are not the droids you're looking for... </h1>}
+        }
+    </div>

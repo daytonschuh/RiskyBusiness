@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ModelLayer.ViewModels.ProductViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cart</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    <a asp-action="Remove" asp-route-id="@item.Id">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{ decimal total = 0;
+    foreach (var item in Model) { total += item.Price * item.Quantity; }
+}
+<div class="text-right float-right">
+    <h2>Total</h2> <h2>@total.ToString("c")</h2></p>
+    <a class="btn custom_btn" id="checkout" asp-controller="Order" asp-action="Checkout" title="Manage">Checkout</a>
+</div>

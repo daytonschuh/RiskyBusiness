@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item mx-1" style="align-self: center;">
+            @if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
+            {
+                <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
+            }
+        </li>
+        @if (User.IsInRole("SuperAdmin"))
+        {
+            <!-- User is signed in and a SuperAdmin -->
+            <li class="nav-item dropdown">
+                <button class="btn custom_btn dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span>Account</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Edit Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-controller="Order" asp-action="History" title="">Order History</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-controller="ManageSite" asp-action="Index" title="Manage">Manage Site</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a>
+                </div>
+            </li>
+        }
+        else
+        {
+            <!-- The user is a customer -->
+            <li class="nav-item dropdown">
+                <button class="btn custom_btn dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span>Account</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Edit Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-controller="Order" asp-action="History" title="">Order History</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a>
+                </div>
+            </li>
+        }
+        <li class="nav-item mx-2">
+            <a class="btn custom_btn" asp-controller="Order" asp-action="Index" title="Manage">Cart</a>
+        </li>
+    }
+    else
+    {
+        <!--The user is not signed in-->
+        <li class="nav-item dropdown">
+            <button class="btn custom_btn dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Account</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">Sign in</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create Account</a>
+            </div>
+        </li>
+    }
+</ul>

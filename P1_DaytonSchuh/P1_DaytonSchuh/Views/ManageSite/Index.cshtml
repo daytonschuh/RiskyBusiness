@@ -1,0 +1,23 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "Site Manager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Site Manager</h1>
+<div class="text-center justify-content-center align-items-center">
+    <div class="input-group">
+        <a asp-controller="UserManager" class="btn btn-info">Users</a>
+    </div>
+    <div class="input-group">
+        <a asp-controller="RoleManager" class="btn btn-info my-1">Roles</a>
+    </div>
+    <div class="input-group">
+        <a asp-controller="ProductManager" class="btn btn-info">Products</a>
+    </div>
+    <div class="input-group">
+        <a asp-controller="LocationManager" class="btn btn-info my-1">Locations</a>
+    </div>
+    <div class="input-group">
+        <a asp-controller="OrderManager" class="btn btn-info">Orders</a>
+    </div>
+</div>

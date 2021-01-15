@@ -1,0 +1,65 @@
+﻿.custom_btn {
+    color: tomato;
+    border-color: tomato;
+}
+
+    .custom_btn:hover {
+        color: #fff;
+        background-color: tomato;
+        border-color: tomato;
+    }
+
+    .custom_btn:focus, .custom_btn.focus {
+        box-shadow: 0 0 0 0.2rem tomato;
+    }
+
+    .custom_btn.disabled, .custom_btn:disabled {
+        color: tomato;
+        background-color: transparent;
+    }
+
+    .custom_btn:not(:disabled):not(.disabled):active, .custom_btn:not(:disabled):not(.disabled).active,
+    .show > .custom_btn.dropdown-toggle {
+        color: #fff;
+        background-color: tomato;
+        border-color: tomato;
+    }
+
+        .custom_btn:not(:disabled):not(.disabled):active:focus, .custom_btn:not(:disabled):not(.disabled).active:focus,
+        .show > .custom_btn.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem tomato;
+        }
+
+
+button.cancel i::after {
+    content: '\00d7';
+    display: block;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    color: red;
+}
+
+#checkout i::after{
+    background-color: transparent;
+    border-color: transparent;
+    display: block;
+    color: white;
+}
+
+fa:hover {
+    color: #fff;
+    background-color: tomato;
+    border-color: tomato;
+}
+
+.divider {
+    width: 5px;
+    height: auto;
+    display: inline-block;
+}
+
+.bg-sg {
+    background: linear-gradient();
+    background-color: #717C89;
+}
